@@ -85,7 +85,7 @@ relPos = targetPos - uavPos;
 % Range between UAV and target
 R = norm(relPos);
 ```
-### 2. ""Relative Velocity** - rate at which the UAV and target approach each other.
+### 2. Relative Velocity - rate at which the UAV and target approach each other.
 
 The relative velocity is the target velocity minus the UAV velocity:</br>
 
@@ -108,7 +108,7 @@ Vrel = VT - VM;
 ```
 This tells us how the position of the target is changing relative to the UAV.
 
-### 3. **Closing Velocity** – rate at which the UAV and target approach each other.
+### 3. Closing Velocity – rate at which the UAV and target approach each other.
 
 The Line-of-Sight (LOS) direction is:</br>
 
@@ -136,8 +136,8 @@ losRateVector = cross(relPos, relVel) / R^2;
 losAngularRate = norm(losRateVector);
 ```
 
-5. **LOS Angular Rate** – rate of change of the line-of-sight direction.
-6. **Commanded Acceleration** – acceleration required by the guidance system.
+4. LOS Angular Rate – rate of change of the line-of-sight direction.
+5. Commanded Acceleration – acceleration required by the guidance system.
 
 The animation displays the UAV and target positions, trajectories, current flight phase, range, navigation constant, and simulation time.
 
