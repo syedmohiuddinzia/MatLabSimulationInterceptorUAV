@@ -7,20 +7,20 @@ The simulation models a **3D interceptor UAV pursuing and intercepting a maneuve
 
 ## 2. Simulation Parameters
 
-| Parameter               |             Value |
-| ----------------------- | ----------------: |
-| Simulation time step    |           0.002 s |
-| Maximum simulation time |              40 s |
-| Navigation constant, N  |                 4 |
-| Intercept radius        |               5 m |
-| Initial UAV speed       |           280 m/s |
-| Target initial position | [2000, 0, 1000] m |
-| Target velocity         |  [-100, 0, 0] m/s |
-| Direct-to-target phase  |           0–1.5 s |
-| PPN transition          |         1.5–3.5 s |
-| PPN pursuit             |       After 3.5 s |
-| Transition acceleration |          120 m/s² |
-| UAV speed control       |    Constant speed |
+| Parameter               |             Value | Purpose                                                                                                          |
+| ----------------------- | ----------------: | ---------------------------------------------------------------------------------------------------------------- |
+| Simulation time step    |           0.002 s | Provides a small integration step for accurate and smooth 3D motion and guidance calculations.                   |
+| Maximum simulation time |              40 s | Defines the maximum duration of the simulation if interception does not occur earlier.                           |
+| Navigation constant, N  |                 4 | Determines the strength of the PPN guidance response to LOS motion and closing velocity.                         |
+| Intercept radius        |               5 m | Defines the maximum separation at which the UAV is considered to have intercepted the target.                    |
+| Initial UAV speed       |           280 m/s | Sets the UAV's starting and controlled flight speed during the interception simulation.                          |
+| Target initial position | [2000, 0, 1000] m | Defines the target's starting location in the 3D simulation environment.                                         |
+| Target velocity         |  [-100, 0, 0] m/s | Defines the target's initial velocity and direction of motion.                                                   |
+| Direct-to-target phase  |           0–1.5 s | Allows the UAV to initially align toward the target before introducing PPN guidance.                             |
+| PPN transition          |         1.5–3.5 s | Gradually blends direct guidance with PPN to avoid an abrupt change in acceleration commands.                    |
+| PPN pursuit             |       After 3.5 s | Enables pure PPN guidance for continuous interception of the maneuvering target.                                 |
+| Transition acceleration |          120 m/s² | Limits the steering acceleration during the initial guidance and transition phases for smoother UAV maneuvering. |
+| UAV speed control       |    Constant speed | Maintains a fixed UAV speed so that the simulation primarily evaluates the guidance and trajectory response.     |
 
 These parameters are defined directly in the simulation code.
 
