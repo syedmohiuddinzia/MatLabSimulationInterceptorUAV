@@ -57,7 +57,7 @@ After **3.5 seconds**, the UAV uses pure PPN guidance to continuously correct it
 
 The simulation provides a 3D visualization of both aircraft and their trajectories. Four telemetry plots are also generated:
 
-1. **Range R(t)** – distance between UAV and target.
+### 1. **Range R(t)** – distance between UAV and target.
 The range is the Euclidean distance between the target position and UAV position:</br>
 
 $$
@@ -75,8 +75,31 @@ relPos = targetPos - uavPos;
 % Range between UAV and target
 R = norm(relPos);
 ```
-   
-3. **Closing Velocity** – rate at which the UAV and target approach each other.
+### 2. ""Relative Velocity** - rate at which the UAV and target approach each other.
+
+The relative velocity is the target velocity minus the UAV velocity:</br>
+
+$$
+\mathbf{v}_{\text{rel}} = \mathbf{v}_T - \mathbf{v}_M
+$$
+
+where:
+$$
+\mathbf{v}_T
+$$
+= target velocity
+$$
+\mathbf{v}_M
+$$
+= UAV velocity
+
+```Matlab
+Vrel = VT - VM;
+```
+This tells us how the position of the target is changing relative to the UAV.
+
+### 3. **Closing Velocity** – rate at which the UAV and target approach each other.
+
 The Line-of-Sight (LOS) direction is:</br>
 
 $$
@@ -102,6 +125,7 @@ losRateVector = cross(relPos, relVel) / R^2;
 % LOS angular rate magnitude
 losAngularRate = norm(losRateVector);
 ```
+
 5. **LOS Angular Rate** – rate of change of the line-of-sight direction.
 6. **Commanded Acceleration** – acceleration required by the guidance system.
 
