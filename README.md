@@ -1,5 +1,6 @@
 # 3D Interceptor UAV – PPN Interception Simulation
 A MATLAB-based 3D interceptor UAV simulation using Proportional Navigation (PPN) to pursue a maneuvering target. The project visualizes UAV/target trajectories and analyzes range, closing velocity, LOS rate, and guidance acceleration during interception.
+![Simulation Demo]([https://example.com](https://github.com/syedmohiuddinzia/MatLabSimulationInterceptorUAV/blob/main/simulation/demo.gif))
 
 ## 1. Simulation Overview
 
