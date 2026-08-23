@@ -65,7 +65,13 @@ $$
 $$
 R(t) = \|\mathbf{r}\| = \sqrt{(x_T - x_U)^2 + (y_T - y_U)^2 + (z_T - z_U)^2}
 $$
+```Matlab
+% Relative position
+relPos = targetPos - uavPos;
 
+% Range between UAV and target
+R = norm(relPos);
+```
    
 3. **Closing Velocity** – rate at which the UAV and target approach each other.
 4. **LOS Angular Rate** – rate of change of the line-of-sight direction.
