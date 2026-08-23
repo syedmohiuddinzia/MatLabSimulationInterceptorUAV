@@ -58,7 +58,8 @@ After **3.5 seconds**, the UAV uses pure PPN guidance to continuously correct it
 The simulation provides a 3D visualization of both aircraft and their trajectories. Four telemetry plots are also generated:
 
 1. **Range R(t)** – distance between UAV and target.
-The range is the Euclidean distance between the target position and UAV position:
+The range is the Euclidean distance between the target position and UAV position:</br>
+
 $$
 \mathbf{r} = \mathbf{p}_T - \mathbf{p}_U
 $$
@@ -66,6 +67,7 @@ $$
 $$
 R(t) = \|\mathbf{r}\| = \sqrt{(x_T - x_U)^2 + (y_T - y_U)^2 + (z_T - z_U)^2}
 $$
+
 ```Matlab
 % Relative position
 relPos = targetPos - uavPos;
@@ -75,15 +77,20 @@ R = norm(relPos);
 ```
    
 3. **Closing Velocity** – rate at which the UAV and target approach each other.
-The Line-of-Sight (LOS) direction is:
+The Line-of-Sight (LOS) direction is:</br>
+
 $$
 \hat{\mathbf{r}} = \frac{\mathbf{r}}{R}
 $$
-The LOS angular velocity vector can be calculated as:
+
+The LOS angular velocity vector can be calculated as:</br>
+
 $$
 \boldsymbol{\omega}_{\text{LOS}} = \frac{\mathbf{r} \times \mathbf{v}_{\text{rel}}}{R^2}
 $$
-The LOS angular rate magnitude is:
+
+The LOS angular rate magnitude is:</br>
+
 $$
 \omega_{\text{LOS}} = \frac{\|\mathbf{r} \times \mathbf{v}_{\text{rel}}\|}{R^2}
 $$
