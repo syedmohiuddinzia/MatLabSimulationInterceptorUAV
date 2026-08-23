@@ -6,6 +6,7 @@ A MATLAB-based 3D interceptor UAV simulation using Proportional Navigation (PPN)
 The simulation models a **3D interceptor UAV pursuing and intercepting a maneuvering target aircraft** using **Proportional Navigation (PPN)** guidance. The UAV initially flies directly toward the target and then smoothly transitions to PPN pursuit before attempting interception.
 
 ## 2. Simulation Parameters
+These parameters are defined directly in the simulation code.
 
 | Parameter               |             Value | Purpose                                                                                                          |
 | ----------------------- | ----------------: | ---------------------------------------------------------------------------------------------------------------- |
@@ -22,10 +23,8 @@ The simulation models a **3D interceptor UAV pursuing and intercepting a maneuve
 | Transition acceleration |          120 m/s² | Limits the steering acceleration during the initial guidance and transition phases for smoother UAV maneuvering. |
 | UAV speed control       |    Constant speed | Maintains a fixed UAV speed so that the simulation primarily evaluates the guidance and trajectory response.     |
 
-These parameters are defined directly in the simulation code.
 
 ## 3. Target Maneuver
-
 Unlike a simple straight-line target, the simulated target performs a **smooth zigzag/S-turn maneuver** in heading, combined with a slower altitude variation. Small positional jitter is also added to represent disturbances or turbulence. The target maintains a constant speed while its direction changes.
 
 ## 4. Guidance Method
@@ -58,10 +57,19 @@ After **3.5 seconds**, the UAV uses pure PPN guidance to continuously correct it
 
 The simulation provides a 3D visualization of both aircraft and their trajectories. Four telemetry plots are also generated:
 
-1. **Range R(t)** – distance between UAV and target.
-2. **Closing Velocity** – rate at which the UAV and target approach each other.
-3. **LOS Angular Rate** – rate of change of the line-of-sight direction.
-4. **Commanded Acceleration** – acceleration required by the guidance system.
+1. **Range R(t)** – distance between UAV and target. The range is the Euclidean distance between the target position and UAV position:
+$$
+\mathbf{r} = \mathbf{p}_T - \mathbf{p}_U
+$$
+
+$$
+R(t) = \|\mathbf{r}\| = \sqrt{(x_T - x_U)^2 + (y_T - y_U)^2 + (z_T - z_U)^2}
+$$
+
+   
+3. **Closing Velocity** – rate at which the UAV and target approach each other.
+4. **LOS Angular Rate** – rate of change of the line-of-sight direction.
+5. **Commanded Acceleration** – acceleration required by the guidance system.
 
 The animation displays the UAV and target positions, trajectories, current flight phase, range, navigation constant, and simulation time.
 
