@@ -39,19 +39,28 @@ The main guidance algorithm is **Pure Proportional Navigation (PPN)**. The simul
 
 The PPN acceleration is calculated using the navigation constant, closing velocity, LOS rate, and UAV velocity direction.
 
-## 5. Flight Phases
+### 5. Flight Phases
+
+The interception process is divided into **three sequential flight phases** to provide a smooth and controlled transition from initial target alignment to active PPN-based interception. Each phase has a specific objective and guidance mechanism, allowing the UAV to progressively transition from direct steering to full proportional navigation pursuit.
 
 ### Phase 1 – Direct-to-Target
 
-The UAV initially points toward the target and uses steering acceleration to reduce the direction error. This phase lasts **1.5 seconds**.
+* **Duration** — `0 ≤ t ≤ 1.5 s`
+* **Objective** — Align the UAV directly toward the target.
+* **Mechanism** — Uses steering acceleration to reduce the initial pointing-direction error and establish a suitable interception trajectory.
 
 ### Phase 2 – PPN Transition
 
-From **1.5 to 3.5 seconds**, direct guidance is gradually blended with PPN guidance. This provides a smooth transition rather than an abrupt change in the control command.
+* **Duration** — `1.5 < t ≤ 3.5 s`
+* **Objective** — Smoothly transition from direct guidance to PPN guidance.
+* **Mechanism** — Gradually blends the direct-to-target and PPN acceleration commands using a scaling factor, preventing sudden changes in the guidance command.
 
 ### Phase 3 – PPN Pursuit
 
-After **3.5 seconds**, the UAV uses pure PPN guidance to continuously correct its trajectory toward the maneuvering target.
+* **Duration** — `t > 3.5 s`
+* **Objective** — Continuously guide the UAV toward interception of the maneuvering target.
+* **Mechanism** — Uses pure PPN guidance to generate corrective acceleration based on the closing velocity and LOS angular rate until the interception condition is satisfied.
+
 
 ## 6. Simulation Outputs
 
